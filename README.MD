@@ -10,6 +10,16 @@ Support only literal object, literal array, number, string and boolean types
 * String, Boolean and number values determinated by config file
 
 ## use
+### .env (or environment variables)
+```
+DB__HOST_NAME=mydomain.com
+DB__PORT=3060
+DB__USER=ADMIN
+DB__PASSWORD=ygIYDG*&h8&ADSGH
+IS_CORS=false
+ANOTHER_KEY=anothervalue
+FRIENDS__1=Sara
+```
 ### config.js
 ```js
 const mapEnv = require('@welldone-software/env-config')
@@ -25,16 +35,6 @@ module.exports = mapEnv({
   friends: ['Adam', 'Rachel'],
   isCors: true
 })
-```
-### .env
-```
-DB__HOST_NAME=mydomain.com
-DB__PORT=3060
-DB__USER=ADMIN
-DB__PASSWORD=ygIYDG*&h8&ADSGH
-IS_CORS=false
-ANOTHER_KEY=anothervalue
-FRIENDS__1=Sara
 ```
 ### result
 ``` js

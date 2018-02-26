@@ -18,8 +18,7 @@ const castToType = (envValue, type) => {
 const mapEnv = (obj, basePath = '') => {
   const fn = obj instanceof Array ? map : mapValues
   return fn(obj, (val, key) => {
-    const envKey =
-      `${basePath ? `${basePath}__` : ''}${snakeCase(key).toUpperCase()}`
+    const envKey = `${basePath ? `${basePath}__` : ''}${snakeCase(key).toUpperCase()}`
     const type = typeof val
     if (process.env[envKey]) {
       return castToType(process.env[envKey], type)
