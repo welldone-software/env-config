@@ -3,18 +3,29 @@ const dotevn = require('dotenv')
 
 dotevn.config()
 
+const converters = {
+  boolean: val => val === 'true',
+  number: val => Number(val),
+}
+
+const castToType = (envValue, type) => {
+  if (type in converters) {
+    return converters[type](envValue)
+  }
+  return envValue
+}
+
 const mapEnv = (obj, basePath = '') => {
   const fn = obj instanceof Array ? map : mapValues
   return fn(obj, (val, key) => {
     const envKey =
       `${basePath ? `${basePath}__` : ''}${snakeCase(key).toUpperCase()}`
-    return (
-      process.env[envKey] ||
-      (typeof val === 'object' ? mapEnv(val, envKey) : val)
-    )
+    const type = typeof val
+    if (process.env[envKey]) {
+      return castToType(process.env[envKey], type)
+    }
+    return type === 'object' ? mapEnv(val, envKey) : val
   })
 }
 
-module.exports = {
-  mapEnv,
-}
+module.exports = mapEnv

@@ -1,4 +1,4 @@
-const {mapEnv} = require('../src')
+const mapEnv = require('../src')
 
 describe('mapEnv', () => {
   test('returns new object', () => {
@@ -29,12 +29,12 @@ describe('mapEnv', () => {
     const a = {
       a: {b: 123},
       b: [1, 2, 3],
-      someText: 1,
-      c: {textAndText: 'abc', f: [1, 23, {r: 'q'}, {m: {t: 1}}]},
+      aNumber: 1,
+      c: {textAndText: 'abc', f: ['a text', 23, {r: 'q'}, {m: {t: 'nested value'}}]},
       d: {f: {g: 1}, y: 2},
     }
     Object.assign(process.env, {
-      SOME_TEXT: '123',
+      A_NUMBER: '123',
       C__TEXT_AND_TEXT: '456',
       D__F__G: '789',
       C__F__0: 'arrays',
@@ -45,12 +45,46 @@ describe('mapEnv', () => {
     expect(mapEnv(a)).toEqual({
       a: 'replace object',
       b: 'replace array',
-      someText: '123',
+      aNumber: 123,
       c: {
         textAndText: '456',
         f: ['arrays', 23, {r: 'q'}, {m: {t: 'arrays&objects'}}],
       },
-      d: {f: {g: '789'}, y: 2},
+      d: {f: {g: 789}, y: 2},
+    })
+  })
+  test('type convert', () => {
+    Object.assign(process.env, {
+      PORT: 'port',
+      DB__HOST_NAME: 'mydomain.com',
+      DB__PORT: '3060',
+      DB__USER: 'ADMIN',
+      DB__PASSWORD: 'ygIYDG*&h8&ADSGH',
+      IS_CORS: 'false',
+      ANOTHER_KEY: 'anothervalue',
+      FRIENDS__1: 'Sara',
+    })
+    const res = mapEnv({
+      port: 1234,
+      db: {
+        hostName: 'example.com',
+        port: 4321,
+        user: '',
+        password: '',
+      },
+      friends: ['Adam', 'Rachel'],
+      isCors: true,
+    })
+    expect(res).toEqual({
+      port: NaN,
+      db: {
+        hostName: 'mydomain.com',
+        port: 3060,
+        user: 'ADMIN',
+        password: 'ygIYDG*&h8&ADSGH',
+      },
+      friends: ['Adam', 'Sara'],
+      isCors: false,
     })
   })
 })
