@@ -1,0 +1,30 @@
+extends:
+  airbnb-base
+
+plugins: [node]
+
+env:
+  node: true
+  es6: true
+
+rules:
+  max-len: [error, 100]
+  semi: [error, never]
+  linebreak-style: off
+  comma-dangle: [error, always-multiline]
+  quotes: [error, single]
+  no-plusplus: off
+  object-curly-spacing: [error, never]
+  object-curly-newline: off
+  no-param-reassign: off
+  no-await-in-loop: off
+  no-empty: [error, allowEmptyCatch: true]
+  import/prefer-default-export: off
+  no-nested-ternary: off
+
+settings:
+  import/resolver:
+    node:
+      moduleDirectory:
+        - node_modules
+        - src
