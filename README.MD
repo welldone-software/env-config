@@ -1,7 +1,20 @@
-# env-config
-Small and powerfull config library
-Read keys from proccess.env and .env file only if there are declared in config object.
-Support only literal object, literal array, number, string and boolean types
+# Overview
+You can have your configuration in one place, organized in a js native structure, possbily hirarchial, but still easily configurable and overideable by environment variables, as  by the [Twelve-Factor App methodology](https://en.wikipedia.org/wiki/Twelve-Factor_App_methodology)
+```js
+{
+  port: 1234,
+  db: {
+    hostName: 'example.com',
+    port: 4321,
+  },
+  friends: ['Adam', 'Rachel'],
+  isCors: true
+}
+```
+
+This Small and powerfull config library read keys from the config objects and searches proccess.env for corresponding keys, according to a mapping convension.
+
+This allows your apps to use config objects that fully support literal object, literal array, number, string and boolean types, while stil being configured with env vars.
 
 ## Conventions
 * Config object is literal javascript object with `camalCase` convention.
@@ -9,7 +22,8 @@ Support only literal object, literal array, number, string and boolean types
 * Two anderscore (`__`) mean nesting - DB_SETTINGS.CONNECTION_STRING translated to dbSettings.connectionString
 * String, Boolean and number values determinated by config file
 
-## use
+## Usage
+
 ### .env (or environment variables)
 ```
 DB__HOST_NAME=mydomain.com
