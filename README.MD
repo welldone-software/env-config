@@ -57,7 +57,7 @@ module.exports = mapEnv({
 })
 ```
 
-## Environment variables (specified in .env file)
+## Environment variables (e.g. as specified in .env file)
 ```
 DB__HOST_NAME=mydomain.com
 DB__PORT=3060
