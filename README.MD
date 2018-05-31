@@ -25,16 +25,6 @@ This allows your apps to use config objects that fully support literal objects, 
 
 ## Usage
 
-### Environment variables (specified in .env file)
-```
-DB__HOST_NAME=mydomain.com
-DB__PORT=3060
-DB__USER=ADMIN
-DB__PASSWORD=ygIYDG*&h8&ADSGH
-IS_CORS=false
-ANOTHER_KEY=anothervalue
-FRIENDS__1=Sara
-```
 ### config.js
 ```js
 const mapEnv = require('@welldone-software/env-config')
@@ -51,18 +41,30 @@ module.exports = mapEnv({
   isCors: true
 })
 ```
+
+### Environment variables (specified in .env file)
+```
+DB__HOST_NAME=mydomain.com
+DB__PORT=3060
+DB__USER=ADMIN
+DB__PASSWORD=ygIYDG*&h8&ADSGH
+IS_CORS=false
+ANOTHER_KEY=anothervalue
+FRIENDS__1=Sara
+```
+
 ### result
 ``` js
 {
   port: 1234,
   db: {
-    hostName: 'mydomain.com',
-    port: 3060,
-    user: 'ADMIN',
-    password: 'ygIYDG*&h8&ADSGH',
+    hostName: **'mydomain.com'**,
+    port: **3060**,
+    user: **'ADMIN'**,
+    password: **'ygIYDG*&h8&ADSGH'**,
   },
-  friends: ['Adam', 'Sara'],
-  isCors: false
+  friends: ['Adam', **'Sara'**],
+  isCors: **false**
 }
 ```
 # Advantages
