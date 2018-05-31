@@ -18,6 +18,22 @@ This tiny and powerfull config library reads keys from the config object and sea
 
 It allows your apps to use config objects that fully support literal objects, literal arrays, numbers, strings and booleans , while stil being configured/overidden by env vars.
 
+# Installing
+
+```bash
+yarn add @welldone-software/env-config
+# or the npm version:
+npm i @welldone-software/env-config
+```
+
+# importing
+
+```js
+import {mergeEnv, mapEnv, getEnvKeys} from '@welldone-software/env-config';
+// or the node version:
+const {mergeEnv, mapEnv, getEnvKeys} = require('@welldone-software/env-config');
+```
+
 # API
 
 ### mergeEnv(config: Object) : Object
