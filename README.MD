@@ -18,6 +18,51 @@ This tiny and powerfull config library reads keys from the config object and sea
 
 It allows your apps to use config objects that fully support literal objects, literal arrays, numbers, strings and booleans , while stil being configured/overidden by env vars.
 
+# Sample
+
+## config.js
+```js
+const {mapEnv} = require('@welldone-software/env-config')
+
+module.exports = mapEnv({
+  port: 1234,
+  db: {
+    hostName: 'example.com',
+    port: 4321,
+    user: '',
+    password: '',
+  },
+  friends: ['Adam', 'Rachel'],
+  isCors: true
+})
+```
+
+## Environment variables (e.g. as specified in .env file)
+```
+DB__HOST_NAME=mydomain.com
+DB__PORT=3060
+DB__USER=ADMIN
+DB__PASSWORD=ygIYDG*&h8&ADSGH
+IS_CORS=false
+ANOTHER_KEY=anothervalue
+FRIENDS__1=Sara
+```
+
+## Result
+```js
+{
+  port: 1234,
+  db: {
+    hostName: 'mydomain.com',
+    port: 3060,
+    user: 'ADMIN',
+    password: 'ygIYDG*&h8&ADSGH',
+  },
+  friends: ['Adam', 'Sara'],
+  isCors: false
+}
+```
+
 # Installing
 
 ```bash
@@ -63,51 +108,6 @@ A utility function that returns the list of environment keys expected/supported 
 
 ## Type resolution
 Types are determined by defaults in config file, so you should have a defalut value on the config object. The type of the value will determine the type and shape expected of the corresponding evironment variable.
-
-# Sample
-
-## config.js
-```js
-const {mapEnv} = require('@welldone-software/env-config')
-
-module.exports = mapEnv({
-  port: 1234,
-  db: {
-    hostName: 'example.com',
-    port: 4321,
-    user: '',
-    password: '',
-  },
-  friends: ['Adam', 'Rachel'],
-  isCors: true
-})
-```
-
-## Environment variables (e.g. as specified in .env file)
-```
-DB__HOST_NAME=mydomain.com
-DB__PORT=3060
-DB__USER=ADMIN
-DB__PASSWORD=ygIYDG*&h8&ADSGH
-IS_CORS=false
-ANOTHER_KEY=anothervalue
-FRIENDS__1=Sara
-```
-
-## Result
-```js
-{
-  port: 1234,
-  db: {
-    hostName: 'mydomain.com',
-    port: 3060,
-    user: 'ADMIN',
-    password: 'ygIYDG*&h8&ADSGH',
-  },
-  friends: ['Adam', 'Sara'],
-  isCors: false
-}
-```
 
 # Advantages
 
