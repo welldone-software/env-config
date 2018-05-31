@@ -1,4 +1,12 @@
-const mapEnv = require('../src')
+const {mapEnv, getEvnKeys} = require('../src')
+
+describe('getEvnKeys', () => {
+  test('returns correct keys', () => {
+    const a = {hello: 'world', camelCase: 'value', nest: {ed: 1, andSome: 2}}
+    console.log('x', getEnvKeys(a))
+    expect(getEnvKeys(a)).toEqual(['HELLO', 'CAMEL_CASE', 'NEST__ED', 'NEST__AND_SOME'])
+  })
+})
 
 describe('mapEnv', () => {
   test('returns new object', () => {
