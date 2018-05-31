@@ -1,5 +1,5 @@
 # Overview
-You can have your configuration in one place, organized in a js native structure, possbily hirarchial, but still easily configurable and overideable by environment variables, as  by the [Twelve-Factor App methodology](https://en.wikipedia.org/wiki/Twelve-Factor_App_methodology)
+Have your configuration in one place, organized in a js native structure, possbily hirarchial, but still easily configurable and overideable by environment variables, as recommended by the [Twelve-Factor App methodology](https://en.wikipedia.org/wiki/Twelve-Factor_App_methodology)
 ```js
 {
   port: 1234,
@@ -12,19 +12,20 @@ You can have your configuration in one place, organized in a js native structure
 }
 ```
 
-This Small and powerfull config library read keys from the config objects and searches proccess.env for corresponding keys, according to a mapping convension.
+This Small and powerfull config library reada keys from the config object and searches proccess.env for corresponding keys according to a naming convension.
 
-This allows your apps to use config objects that fully support literal object, literal array, number, string and boolean types, while stil being configured with env vars.
+This allows your apps to use config objects that fully support literal objects, literal arrays, numbers, strings and booleans , while stil being configured/overidden by env vars.
 
 ## Conventions
-* Config object is literal javascript object with `camalCase` convention.
-* proccess.env and .env file with `UPPER_SNAKE_CASE` convention.
-* Two anderscore (`__`) mean nesting - DB_SETTINGS.CONNECTION_STRING translated to dbSettings.connectionString
-* String, Boolean and number values determinated by config file
+* JS config object is literal javascript object with `camalCase` members.
+* The environment variables are expected in `UPPER_SNAKE_CASE` convention.
+* Two underscores (`__`) mean nesting, e.g. DB_SETTINGS__CONNECTION_STRING translated to dbSettings.connectionString
+* Supports String, Boolean, Number and Array values.
+* Types are determined by defaults in config file.
 
 ## Usage
 
-### .env (or environment variables)
+### Environment variables (specified in .env file)
 ```
 DB__HOST_NAME=mydomain.com
 DB__PORT=3060
@@ -64,7 +65,11 @@ module.exports = mapEnv({
   isCors: false
 }
 ```
-## principles
-* Single source of truth - one file define the posibble config keys.
-* Without mapping code - <s>`const port = proccess.env.PORT || 1000`</s>
-* Readability configuration
+# Advantages
+* Single source of truth - one place to define all posibble config keys.
+* Simple to use but still allows for rather complex configurations: not just strings and not just flat structures.
+* Uses 'native' naming convention in each environment so configs look natural both in JS and in ENV. 
+* Much more readable than the alternative: <s>`const port = proccess.env.PORT || 1000`</s>
+
+# Roadmap
+* Add typing support (typescript and Flow)
