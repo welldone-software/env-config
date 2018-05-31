@@ -93,3 +93,7 @@ FRIENDS__1=Sara
 
 # Roadmap
 * Add typing support (Typescript and Flow)
+
+# License
+
+[MIT License](LICENSE)
