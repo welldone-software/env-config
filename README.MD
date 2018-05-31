@@ -30,13 +30,23 @@ A pure function version of `mergeEnv`. This keeps the config object parameter im
 ### getEnvKeys(config: Object) : string[]
 A utility function that returns the list of environment keys expected/supported for a given config object. 
 
-# The Conventions
+# Conventions
 
-* JS config object is literal javascript object with `camalCase` members.
-* The environment variables are expected in `UPPER_SNAKE_CASE` convention.
+## JS
+* The JS config object should be a literal object with `camalCase` members.
+* Object can be nested, aka have members which are objects themselves.
+* Object fields can be of of either _Object, _String_, _Boolean_, _Number_ or _Array_ type.
+* Suport for _Array_ is limited to simple _String Arrays_. Nesting is not supported.
+
+## ENV
+* Environment variables are expected in `UPPER_SNAKE_CASE` convention.
+* A single underscore (`_`) singinfied a word change and is mapped to case changes in js's `camalCase`.
 * Two underscores (`__`) mean nesting, e.g. DB_SETTINGS__CONNECTION_STRING translated to dbSettings.connectionString
-* Supports String, Boolean, Number and Array values.
-* Types are determined by defaults in config file.
+* Boolean values are `true` and `false`
+* Arrays values are modeled like sub objects, e.g. `VAR_NAME__0`. Note the _double_ underscore.
+
+## Type resolution
+Types are determined by defaults in config file, so you should have a defalut value on the config object. The type of the value will determine the type and shape expected of the corresponding evironment variable.
 
 # Sample
 
