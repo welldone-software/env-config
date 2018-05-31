@@ -107,7 +107,7 @@ A utility function that returns the list of environment keys expected/supported 
 * Arrays values are modeled like sub objects, e.g. `VAR_NAME__0`. Note the _double_ underscore.
 
 ## Type resolution
-Types are determined by defaults in config file, so you should have a defalut value on the config object. The type of the value will determine the type and shape expected of the corresponding evironment variable.
+Types are determined by defaults in the config object, so you should have a defalut value on each field of the config object. The type of the value will determine the type and shape expected of the corresponding evironment variable.
 
 # Advantages
 
