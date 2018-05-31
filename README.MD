@@ -71,7 +71,7 @@ yarn add @welldone-software/env-config
 npm i @welldone-software/env-config
 ```
 
-# importing
+# Importing
 
 ```js
 import {mergeEnv, mapEnv, getEnvKeys} from '@welldone-software/env-config';
