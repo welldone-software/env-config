@@ -27,4 +27,18 @@ const mapEnv = (obj, basePath = '') => {
   })
 }
 
-module.exports = mapEnv
+const getEnvKeys = (obj, basePath = '') =>
+  flatten(map(obj, (val, key) => {
+    const envKey =
+      `${basePath ? `${basePath}__` : ''}${snakeCase(key).toUpperCase()}`
+    return typeof val === 'object' ? getEnvKeys(val, envKey) : envKey
+  }))
+
+
+const mergeEnv = (obj, basePath = '') => merge(obj, mapEnv(obj, basePath))
+
+module.exports = {
+  mapEnv,
+  mergeEnv,
+  getEnvKeys,
+}
