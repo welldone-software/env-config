@@ -2,13 +2,13 @@
 Have your configuration in one place, organized in a js native structure, possbily hirarchial, but still easily configurable and overideable by environment variables, as recommended by the [Twelve-Factor App methodology](https://en.wikipedia.org/wiki/Twelve-Factor_App_methodology)
 ```js
 {
-  port: 1234,
+  port: 1234,                     // PORT=1234
+  isCors: true                    // IS_CORS=true
   db: {
-    hostName: 'example.com',
-    port: 4321,
+    hostName: 'example.com',      // DB__HOST_NAME=example.com
+    port: 4321,                   // DB__PORT=4321
   },
-  friends: ['Adam', 'Rachel'],
-  isCors: true
+  friends: ['Adam', 'Rachel'],    // FRIENDS__0=Adam FRIENDS__1=Rachel
 }
 ```
 
@@ -25,17 +25,15 @@ This allows your apps to use config objects that fully support literal objects, 
 
 ## Usage
 
-### Environment variables (specified in .env file)
+### Add to your project using npm or yarn
 ```
-DB__HOST_NAME=mydomain.com
-DB__PORT=3060
-DB__USER=ADMIN
-DB__PASSWORD=ygIYDG*&h8&ADSGH
-IS_CORS=false
-ANOTHER_KEY=anothervalue
-FRIENDS__1=Sara
+npm i -S @welldone-software/env-config
 ```
-### config.js
+```
+yarn add @welldone-software/env-config
+```
+
+### Define a config file, e.g. config.js
 ```js
 const mapEnv = require('@welldone-software/env-config')
 
@@ -51,7 +49,19 @@ module.exports = mapEnv({
   isCors: true
 })
 ```
-### result
+
+### At runtime, set environment variables (or specify in .env file)
+```
+DB__HOST_NAME=mydomain.com
+DB__PORT=3060
+DB__USER=ADMIN
+DB__PASSWORD=ygIYDG*&h8&ADSGH
+IS_CORS=false
+ANOTHER_KEY=anothervalue
+FRIENDS__1=Sara
+```
+
+### At runtime, the result will be
 ``` js
 {
   port: 1234,
@@ -73,3 +83,4 @@ module.exports = mapEnv({
 
 # Roadmap
 * Add typing support (typescript and Flow)
+* Support initial prefix (only merge prefixed env vars)
