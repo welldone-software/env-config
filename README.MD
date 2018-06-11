@@ -4,13 +4,13 @@ Have your configuration in one place, organized in a js native structure, possbi
 Your config objects can look like below, and still fully support environment variables:
 ```js
 {
-  port: 1234,
+  port: 1234,                     // PORT=1234
+  isCors: true                    // IS_CORS=true
   db: {
-    hostName: 'example.com',
-    port: 4321,
+    hostName: 'example.com',      // DB__HOST_NAME=example.com
+    port: 4321,                   // DB__PORT=4321
   },
-  friends: ['Adam', 'Rachel'],
-  isCors: true
+  friends: ['Adam', 'Rachel'],    // FRIENDS__0=Adam FRIENDS__1=Rachel
 }
 ```
 
