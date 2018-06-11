@@ -1,6 +1,6 @@
 {
   "name": "@welldone-software/env-config",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Small and powerfull config library ",
   "main": "src/index.js",
   "scripts": {
