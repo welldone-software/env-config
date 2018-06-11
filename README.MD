@@ -30,14 +30,15 @@ module.exports = mapEnv({
     hostName: 'example.com',
     port: 4321,
     user: '',
-    password: '',
+    password: '',IS_CORS=false
+
   },
   friends: ['Adam', 'Rachel'],
   isCors: true
 })
 ```
 
-## Environment variables (e.g. as specified in .env file)
+## Environment variables (specified in .env file or at runtime)
 ```
 DB__HOST_NAME=mydomain.com
 DB__PORT=3060
@@ -48,8 +49,9 @@ ANOTHER_KEY=anothervalue
 FRIENDS__1=Sara
 ```
 
-## Result
-```js
+
+### At runtime, the result will be
+``` js
 {
   port: 1234,
   db: {
@@ -118,8 +120,9 @@ Types are determined by defaults in the config object, so you should have a defa
 
 
 # Roadmap
-* Add typing support (Typescript and Flow)
+* Add typing support (typescript and Flow)
+* Support initial prefix (only merge prefixed env vars)
 
 # License
-
 [MIT License](LICENSE)
+
