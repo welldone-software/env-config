@@ -43,7 +43,8 @@ module.exports = mapEnv({
     hostName: 'example.com',
     port: 4321,
     user: '',
-    password: '',
+    password: '',IS_CORS=false
+
   },
   friends: ['Adam', 'Rachel'],
   isCors: true
