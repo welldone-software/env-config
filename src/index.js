@@ -1,4 +1,8 @@
-const {mapValues, map, snakeCase} = require('lodash')
+const mapValues = require('lodash/mapValues')
+const map = require('lodash/map')
+const flatten = require('lodash/flatten')
+const snakeCase = require('lodash/snakeCase')
+const merge = require('lodash/merge')
 const dotevn = require('dotenv')
 
 dotevn.config()
