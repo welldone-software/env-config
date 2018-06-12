@@ -1,4 +1,4 @@
-const {mapEnv, getEvnKeys} = require('../src')
+const {mapEnv, getEnvKeys} = require('../src')
 
 describe('getEvnKeys', () => {
   test('returns correct keys', () => {
