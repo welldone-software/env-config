@@ -8,7 +8,7 @@ const dotevn = require('dotenv')
 dotevn.config()
 
 const converters = {
-  boolean: val => val === 'true',
+  boolean: val => val === 'true' || val === 'TRUE',
   number: val => Number(val),
 }
 
