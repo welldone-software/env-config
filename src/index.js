@@ -3,9 +3,6 @@ const map = require('lodash/map')
 const flatten = require('lodash/flatten')
 const snakeCase = require('lodash/snakeCase')
 const merge = require('lodash/merge')
-const dotevn = require('dotenv')
-
-dotevn.config()
 
 const converters = {
   boolean: val => val === 'true' || val === 'TRUE',

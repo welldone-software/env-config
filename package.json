@@ -2,7 +2,8 @@
   "name": "@welldone-software/env-config",
   "version": "1.0.2",
   "description": "Small and powerfull config library ",
-  "main": "src/index.js",
+  "main": "src/server.js",
+  "browser": "src/index.js",
   "scripts": {
     "test": "jest",
     "lint:fix": "prettier-eslint --write \"src/**/*.js\" && eslint src",
