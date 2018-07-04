@@ -30,8 +30,7 @@ module.exports = mapEnv({
     hostName: 'example.com',
     port: 4321,
     user: '',
-    password: '',IS_CORS=false
-
+    password: '',
   },
   friends: ['Adam', 'Rachel'],
   isCors: true
@@ -99,7 +98,6 @@ A utility function that returns the list of environment keys expected/supported 
 * The JS config object should be a literal object with `camalCase` members.
 * Object can be nested, aka have members which are objects themselves.
 * Object fields can be of of either _Object, _String_, _Boolean_, _Number_ or _Array_ type.
-* Suport for _Array_ is limited to simple _String Arrays_. Nesting is not supported.
 
 ## ENV
 * Environment variables are expected in `UPPER_SNAKE_CASE` convention.
