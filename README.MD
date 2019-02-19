@@ -75,9 +75,9 @@ npm i @welldone-software/env-config
 # Importing
 
 ```js
-import {mergeEnv, mapEnv, getEnvKeys} from '@welldone-software/env-config';
+import {mergeEnv, mapEnv, getEnvKeys, getDotEnvFileFormat} from '@welldone-software/env-config';
 // or the node version:
-const {mergeEnv, mapEnv, getEnvKeys} = require('@welldone-software/env-config');
+const {mergeEnv, mapEnv, getEnvKeys, getDotEnvFileFormat} = require('@welldone-software/env-config');
 ```
 
 # API
@@ -91,6 +91,9 @@ A pure function version of `mergeEnv`. This keeps the config object parameter im
 
 ### getEnvKeys(config: Object) : string[]
 A utility function that returns the list of environment keys expected/supported for a given config object. 
+
+### getDotEnvFileFormat(config: Object) : string
+A utility function that returns the dot env file (keys and values) for a given config object.
 
 # Conventions
 
