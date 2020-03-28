@@ -122,7 +122,7 @@ Types are determined by defaults in the config object, so you should have a defa
 
 # Roadmap
 * Add typing support (typescript and Flow)
-* Support initial prefix (only merge prefixed env vars)
+* Support initial prefix (only merge prefixed env vars, with and without omitting the prefix)
 
 # License
 [MIT License](LICENSE)
